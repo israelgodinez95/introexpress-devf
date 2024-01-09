@@ -1,5 +1,7 @@
 // #1 Call express lib (import)
 const express = require('express');
+const petsRouter = require('./api/v1/pets')
+const cakeRouter = require('./api/v1/cakes')
 
 //#2 Crear una instancia de express (crear una aplicacion de express)
 const app = express()
@@ -12,6 +14,10 @@ app.use(express.json())
 app.get('/', (request, response) => {
     response.send('Hola mundo 2 y 3')
 })
+
+//#6 Importar rutas en otros archivos, con ayuda del router de express
+app.use(petsRouter)
+app.use(cakeRouter)
 
 //#5 Inicializar el servidor (app.listen)
 app.listen(3000, () => {
